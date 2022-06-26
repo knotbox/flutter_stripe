@@ -142,8 +142,18 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   stripe_js.ElementsOptions createOptions() {
+    print(
+      (widget.style?.textColor ?? Colors.black).toHex(),
+    );
     return stripe_js.ElementsOptions(
       hidePostalCode: !widget.enablePostalCode,
+      style: stripe_js.jsify(
+        {
+          'base': stripe_js.Style(
+            color: (widget.style?.textColor ?? Colors.black).toHex(),
+          ),
+        },
+      ),
     );
   }
 
